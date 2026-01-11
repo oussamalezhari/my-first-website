@@ -2,173 +2,150 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>اختار 4 عطور بـ 100 درهم</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Parfums Oussama</title>
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding: 0;
+body{
+    margin:0;
+    font-family:Tahoma, Arial;
+    background:#111;
+    color:#fff;
 }
-
-.container {
-  max-width: 800px;
-  margin: 30px auto;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
+header{
+    text-align:center;
+    padding:20px;
 }
-
-h1, h2 {
-  text-align: center;
+header h1{
+    color:#f4b400;
 }
-
-.price {
-  text-align: center;
-  font-size: 20px;
-  color: #e63946;
-  margin-bottom: 20px;
+section{
+    padding:20px;
 }
-
-.perfumes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
+.category{
+    margin-bottom:40px;
 }
-
-.perfume {
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
+.category h2{
+    margin-bottom:15px;
+    border-bottom:2px solid #444;
+    padding-bottom:5px;
 }
-
-.perfume img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 8px;
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
 }
-
-.perfume label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
+.card{
+    background:#1c1c1c;
+    border-radius:10px;
+    padding:10px;
+    text-align:center;
 }
-
-.order-box {
-  margin-top: 25px;
-  text-align: center;
+.card img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+    border-radius:8px;
 }
-
-input, button {
-  padding: 10px;
-  margin: 5px;
-  width: 90%;
-  max-width: 300px;
+.card label{
+    display:block;
+    margin-top:8px;
+    cursor:pointer;
 }
-
-button {
-  background: #25D366;
-  color: white;
-  border: none;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
+button{
+    background:#25D366;
+    border:none;
+    color:#fff;
+    padding:15px;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    width:100%;
 }
-
-#error {
-  color: red;
-  margin-top: 10px;
+button:hover{
+    background:#1da851;
+}
+.footer{
+    padding:20px;
+    text-align:center;
+    background:#000;
+    margin-top:30px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>🧴 اختار 4 عطور فقط</h1>
-  <p class="price">🔥 Pack ديال 4 عطور بـ 100 درهم 🔥</p>
+<header>
+    <h1>🧴 عطور أسامة</h1>
+    <p>Pack ديال 4 عطور بـ 100 درهم</p>
+    <p><strong>خاصك تختار 4 عطور بالضبط</strong></p>
+</header>
 
-  <div class="perfumes">
-    <div class="perfume">
-      <img src="images/sauvage.jpg">
-      <label><input type="checkbox" class="perfume-check" value="Dior Sauvage"> Dior Sauvage</label>
-    </div>
+<section class="category">
+<h2>👔 عطور رجالية</h2>
+<div class="products">
+<script>
+const men = [
+"Sauvage","Ultra Male","Stronger With You","Le Male Elixir",
+"Wanted Azzaro","Invictus","Dior Sauvage","L'Homme Ideal",
+"Lacoste Noir","Versace Eros","Tom Ford","Baccarat Rouge"
+];
+men.forEach(p=>{
+document.write(`
+<div class="card">
+<img src="https://via.placeholder.com/300x200?text=${p}">
+<label>
+<input type="checkbox" class="perfume" value="${p}"> ${p}
+</label>
+</div>
+`);
+});
+</script>
+</div>
+</section>
 
-    <div class="perfume">
-      <img src="images/ultra.jpg">
-      <label><input type="checkbox" class="perfume-check" value="Ultra Male"> Ultra Male</label>
-    </div>
+<section class="category">
+<h2>💃 عطور نسائية</h2>
+<div class="products">
+<script>
+const women = [
+"Yara","Good Girl","La Vie Est Belle","Black Opium",
+"My Way","Libre","Kayali 42","Burberry Her",
+"Scandal","Si Armani","Alien","Baccarat Rouge"
+];
+women.forEach(p=>{
+document.write(`
+<div class="card">
+<img src="https://via.placeholder.com/300x200?text=${p}">
+<label>
+<input type="checkbox" class="perfume" value="${p}"> ${p}
+</label>
+</div>
+`);
+});
+</script>
+</div>
+</section>
 
-    <div class="perfume">
-      <img src="images/intense.jpg">
-      <label><input type="checkbox" class="perfume-check" value="Intensely"> Intensely</label>
-    </div>
+<section>
+<button onclick="order()">🟢 طلب عبر واتساب</button>
+</section>
 
-    <div class="perfume">
-      <img src="images/blue.jpg">
-      <label><input type="checkbox" class="perfume-check" value="Bleu de Chanel"> Bleu de Chanel</label>
-    </div>
-
-    <div class="perfume">
-      <img src="images/one.jpg">
-      <label><input type="checkbox" class="perfume-check" value="The One"> The One</label>
-    </div>
-
-    <div class="perfume">
-      <img src="images/ysl.jpg">
-      <label><input type="checkbox" class="perfume-check" value="YSL Y"> YSL Y</label>
-    </div>
-  </div>
-
-  <div class="order-box">
-    <h2>📦 معلومات الطلب</h2>
-    <input type="text" id="name" placeholder="الاسم">
-    <input type="text" id="city" placeholder="المدينة">
-    <input type="text" id="phone" placeholder="رقم الهاتف">
-
-    <button onclick="sendOrder()">إرسال الطلب عبر واتساب</button>
-    <p id="error"></p>
-  </div>
+<div class="footer">
+📞 06XXXXXXXX <br>
+التوصيل لجميع المدن
 </div>
 
 <script>
-function sendOrder() {
-  const checked = document.querySelectorAll('.perfume-check:checked');
-
-  if (checked.length !== 4) {
-    document.getElementById("error").innerText =
-      "خاصك تختار 4 ديال العطور بالضبط";
-    return;
-  }
-
-  const name = document.getElementById("name").value;
-  const city = document.getElementById("city").value;
-  const phone = document.getElementById("phone").value;
-
-  if (!name || !city || !phone) {
-    document.getElementById("error").innerText =
-      "عمر جميع الخانات";
-    return;
-  }
-
-  let perfumes = [];
-  checked.forEach(p => perfumes.push(p.value));
-
-  let message =
-    "سلام، بغيت نطلب Pack ديال 4 عطور:%0A" +
-    perfumes.join("%0A") +
-    "%0A%0Aالاسم: " + name +
-    "%0Aالمدينة: " + city +
-    "%0Aالهاتف: " + phone;
-
-  window.open(
-    "https://wa.me/212767208866?text=" + message,
-    "_blank"
-  );
+function order(){
+    const selected = document.querySelectorAll(".perfume:checked");
+    if(selected.length !== 4){
+        alert("خاصك تختار 4 عطور بالضبط");
+        return;
+    }
+    let list = [];
+    selected.forEach(i=>list.push(i.value));
+    const msg = سلام، بغيت نطلب Pack ديال 4 عطور بـ 100 درهم:%0A- ${list.join("%0A- ")};
+    window.open("https://wa.me/2126XXXXXXXX?text="+msg,"_blank");
 }
 </script>
 
