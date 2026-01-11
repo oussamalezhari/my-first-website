@@ -5,38 +5,37 @@
 <title>Parfums Oussama</title>
 <style>
 body{
-    margin:0;
-    font-family:Tahoma, Arial;
+    font-family: Arial, sans-serif;
     background:#111;
     color:#fff;
+    margin:0;
+    padding:0;
 }
 header{
-    text-align:center;
+    background:#000;
     padding:20px;
+    text-align:center;
 }
 header h1{
-    color:#f4b400;
+    color:#f5b301;
 }
-section{
+.section{
     padding:20px;
 }
-.category{
-    margin-bottom:40px;
+.section h2{
+    color:#f5b301;
+    border-bottom:1px solid #333;
+    padding-bottom:10px;
 }
-.category h2{
-    margin-bottom:15px;
-    border-bottom:2px solid #444;
-    padding-bottom:5px;
-}
-.products{
+.grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
     gap:15px;
 }
 .card{
     background:#1c1c1c;
+    padding:15px;
     border-radius:10px;
-    padding:10px;
     text-align:center;
 }
 .card img{
@@ -47,27 +46,30 @@ section{
 }
 .card label{
     display:block;
-    margin-top:8px;
-    cursor:pointer;
+    margin-top:10px;
 }
-button{
-    background:#25D366;
-    border:none;
-    color:#fff;
-    padding:15px;
-    font-size:18px;
-    border-radius:10px;
-    cursor:pointer;
-    width:100%;
-}
-button:hover{
-    background:#1da851;
-}
-.footer{
+.order-box{
+    background:#000;
     padding:20px;
     text-align:center;
-    background:#000;
-    margin-top:30px;
+    position:sticky;
+    bottom:0;
+}
+button{
+    background:#25d366;
+    color:#fff;
+    border:none;
+    padding:15px 30px;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+button:hover{
+    background:#1ebe5d;
+}
+.note{
+    margin-top:10px;
+    color:#f5b301;
 }
 </style>
 </head>
@@ -75,77 +77,53 @@ button:hover{
 <body>
 
 <header>
-    <h1>🧴 عطور أسامة</h1>
-    <p>Pack ديال 4 عطور بـ 100 درهم</p>
-    <p><strong>خاصك تختار 4 عطور بالضبط</strong></p>
+<h1>عطور أسامة</h1>
+<p>Pack 4 عطور = 100 درهم</p>
 </header>
 
-<section class="category">
-<h2>👔 عطور رجالية</h2>
-<div class="products">
-<script>
-const men = [
-"Sauvage","Ultra Male","Stronger With You","Le Male Elixir",
-"Wanted Azzaro","Invictus","Dior Sauvage","L'Homme Ideal",
-"Lacoste Noir","Versace Eros","Tom Ford","Baccarat Rouge"
-];
-men.forEach(p=>{
-document.write(`
-<div class="card">
-<img src="https://via.placeholder.com/300x200?text=${p}">
-<label>
-<input type="checkbox" class="perfume" value="${p}"> ${p}
-</label>
+<div class="section">
+<h2>🧔 عطور رجالية</h2>
+<div class="grid">
+<div class="card"><img src="images/sauvage.jpg"><label><input type="checkbox" value="Sauvage"> Sauvage</label></div>
+<div class="card"><img src="images/ultramale.jpg"><label><input type="checkbox" value="Ultra Male"> Ultra Male</label></div>
+<div class="card"><img src="images/intensely.jpg"><label><input type="checkbox" value="Stronger With You Intensely"> Intensely</label></div>
+<div class="card"><img src="images/bleu.jpg"><label><input type="checkbox" value="Bleu de Chanel"> Bleu de Chanel</label></div>
+<div class="card"><img src="images/invictus.jpg"><label><input type="checkbox" value="Invictus"> Invictus</label></div>
 </div>
-`);
-});
-</script>
 </div>
-</section>
 
-<section class="category">
-<h2>💃 عطور نسائية</h2>
-<div class="products">
-<script>
-const women = [
-"Yara","Good Girl","La Vie Est Belle","Black Opium",
-"My Way","Libre","Kayali 42","Burberry Her",
-"Scandal","Si Armani","Alien","Baccarat Rouge"
-];
-women.forEach(p=>{
-document.write(`
-<div class="card">
-<img src="https://via.placeholder.com/300x200?text=${p}">
-<label>
-<input type="checkbox" class="perfume" value="${p}"> ${p}
-</label>
+<div class="section">
+<h2>👩 عطور نسائية</h2>
+<div class="grid">
+<div class="card"><img src="images/yara.jpg"><label><input type="checkbox" value="Yara"> Yara</label></div>
+<div class="card"><img src="images/goodgirl.jpg"><label><input type="checkbox" value="Good Girl"> Good Girl</label></div>
+<div class="card"><img src="images/blackopium.jpg"><label><input type="checkbox" value="Black Opium"> Black Opium</label></div>
+<div class="card"><img src="images/lavieestbelle.jpg"><label><input type="checkbox" value="La Vie Est Belle"> La Vie Est Belle</label></div>
+<div class="card"><img src="images/baccarat.jpg"><label><input type="checkbox" value="Baccarat Rouge"> Baccarat Rouge</label></div>
 </div>
-`);
-});
-</script>
 </div>
-</section>
 
-<section>
-<button onclick="order()">🟢 طلب عبر واتساب</button>
-</section>
-
-<div class="footer">
-📞 06XXXXXXXX <br>
-التوصيل لجميع المدن
+<div class="order-box">
+<button onclick="sendOrder()">طلب عبر واتساب</button>
+<div class="note">⚠️ خاصك تختار 4 عطور بالضبط</div>
 </div>
 
 <script>
-function order(){
-    const selected = document.querySelectorAll(".perfume:checked");
-    if(selected.length !== 4){
+function sendOrder(){
+    const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    if(checked.length !== 4){
         alert("خاصك تختار 4 عطور بالضبط");
         return;
     }
-    let list = [];
-    selected.forEach(i=>list.push(i.value));
-    const msg = سلام، بغيت نطلب Pack ديال 4 عطور بـ 100 درهم:%0A- ${list.join("%0A- ")};
-    window.open("https://wa.me/2126XXXXXXXX?text="+msg,"_blank");
+
+    let list = "";
+    checked.forEach((c,i)=>{
+        list += (i+1) + "- " + c.value + "%0A";
+    });
+
+    const phone = "212767208866";
+    const msg = "سلام، بغيت نطلب Pack 4 عطور بـ 100 درهم:%0A%0A" + list;
+    window.open("https://wa.me/" + phone + "?text=" + msg, "_blank");
 }
 </script>
 
