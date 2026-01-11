@@ -2,14 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>Parfums Oussama</title>
+<title>عطور أسامة</title>
 <style>
 body{
     font-family: Arial, sans-serif;
     background:#111;
     color:#fff;
     margin:0;
-    padding:0;
 }
 header{
     background:#000;
@@ -51,24 +50,29 @@ header h1{
 .order-box{
     background:#000;
     padding:20px;
-    text-align:center;
     position:sticky;
     bottom:0;
 }
+.order-box input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:none;
+    border-radius:6px;
+}
 button{
+    width:100%;
     background:#25d366;
     color:#fff;
     border:none;
-    padding:15px 30px;
+    padding:15px;
     font-size:18px;
     border-radius:8px;
     cursor:pointer;
 }
-button:hover{
-    background:#1ebe5d;
-}
 .note{
-    margin-top:10px;
+    text-align:center;
+    margin-top:8px;
     color:#f5b301;
 }
 </style>
@@ -77,7 +81,7 @@ button:hover{
 <body>
 
 <header>
-<h1>عطور أسامة</h1>
+<h1>🧴 عطور أسامة</h1>
 <p>Pack 4 عطور = 100 درهم</p>
 </header>
 
@@ -86,7 +90,7 @@ button:hover{
 <div class="grid">
 <div class="card"><img src="images/sauvage.jpg"><label><input type="checkbox" value="Sauvage"> Sauvage</label></div>
 <div class="card"><img src="images/ultramale.jpg"><label><input type="checkbox" value="Ultra Male"> Ultra Male</label></div>
-<div class="card"><img src="images/intensely.jpg"><label><input type="checkbox" value="Stronger With You Intensely"> Intensely</label></div>
+<div class="card"><img src="images/intensely.jpg"><label><input type="checkbox" value="Intensely"> Intensely</label></div>
 <div class="card"><img src="images/bleu.jpg"><label><input type="checkbox" value="Bleu de Chanel"> Bleu de Chanel</label></div>
 <div class="card"><img src="images/invictus.jpg"><label><input type="checkbox" value="Invictus"> Invictus</label></div>
 </div>
@@ -104,6 +108,8 @@ button:hover{
 </div>
 
 <div class="order-box">
+<input type="text" id="name" placeholder="الاسم الكامل">
+<input type="text" id="city" placeholder="المدينة">
 <button onclick="sendOrder()">طلب عبر واتساب</button>
 <div class="note">⚠️ خاصك تختار 4 عطور بالضبط</div>
 </div>
@@ -111,6 +117,14 @@ button:hover{
 <script>
 function sendOrder(){
     const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+    const name = document.getElementById("name").value.trim();
+    const city = document.getElementById("city").value.trim();
+
+    if(!name || !city){
+        alert("عمر الاسم والمدينة");
+        return;
+    }
+
     if(checked.length !== 4){
         alert("خاصك تختار 4 عطور بالضبط");
         return;
@@ -122,7 +136,12 @@ function sendOrder(){
     });
 
     const phone = "212767208866";
-    const msg = "سلام، بغيت نطلب Pack 4 عطور بـ 100 درهم:%0A%0A" + list;
+    const msg =
+      "سلام، بغيت نطلب Pack 4 عطور بـ 100 درهم:%0A%0A" +
+      list +
+      "%0Aالاسم: " + name +
+      "%0Aالمدينة: " + city;
+
     window.open("https://wa.me/" + phone + "?text=" + msg, "_blank");
 }
 </script>
